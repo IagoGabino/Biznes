@@ -1,20 +1,20 @@
 <template>
-    <div class="sale-modal">
+    <div class="sale-modal" data-testid="sale-modal">
         <ModalComponent :modalOpen="modalOpen" @closeModal="closeModal">
-            <h2>
+            <h2 data-testid="sale-id">
                 Pedido Nº: {{ sale.id }}
             </h2>
 
-            <div class="sale-details">
-                <div class="sale-info">
-                    <div class="left">
-                        <h2>Data: <span>{{ formatDate(sale.date) }}</span></h2>
-                        <h2>Entrega Prevista: <span>{{ formatDate(sale.deliveryDate) }}</span></h2>
-                        <h2>Forma de Pagamento: <span>{{ sale.paymentMethod }}</span></h2>
+            <div class="sale-details" data-testid="sale-details">
+                <div class="sale-info" data-testid="sale-info">
+                    <div class="left" data-testid="sale-info-left">
+                        <h2 data-testid="sale-date">Data: <span>{{ formatDate(sale.date) }}</span></h2>
+                        <h2 data-testid="sale-delivery-date">Entrega Prevista: <span>{{ formatDate(sale.deliveryDate) }}</span></h2>
+                        <h2 data-testid="sale-payment-method">Forma de Pagamento: <span>{{ sale.paymentMethod }}</span></h2>
                     </div>
-                    <div class="right">
+                    <div class="right" data-testid="sale-info-right">
                         <h2>Endereço de entrega</h2>
-                        <span>
+                        <span data-testid="delivery-address">
                             {{ sale.recipientName }} <br>
                             {{ sale.Address?.street }}, {{ sale.Address?.number }} - {{ sale.Address?.complement }} -
                             {{ sale.Address?.neighborhood }}, 
@@ -24,23 +24,23 @@
                     </div>
                 </div>
 
-                <div class="items">
+                <div class="items" data-testid="sale-items">
                     <h1>Itens do pedido</h1>
-                    <div class="sale-list">
-                        <div class="sale-list-header">
-                            <div class="header-item" v-for="(field, fkey) in listFields" :key="fkey">
+                    <div class="sale-list" data-testid="sale-list">
+                        <div class="sale-list-header" data-testid="sale-list-header">
+                            <div class="header-item" v-for="(field, fkey) in listFields" :key="fkey" data-testid="sale-list-header-item">
                                 <h2>{{ field }}</h2>
                             </div>
                         </div>
-                        <div class="sale-products">
-                            <div class="sale-prod" v-for="(prod, pkey) in productsList" :key="pkey">
-                                <div class="prod-info">
-                                    <img :src="prod.photo" alt="product">
-                                    <h2>{{ prod.name }}</h2>
+                        <div class="sale-products" data-testid="sale-products">
+                            <div class="sale-prod" v-for="(prod, pkey) in productsList" :key="pkey" data-testid="sale-prod">
+                                <div class="prod-info" data-testid="prod-info">
+                                    <img :src="prod.photo" alt="product" data-testid="product-photo">
+                                    <h2 data-testid="product-name">{{ prod.name }}</h2>
                                 </div>
-                                <h2>{{ prod.quantity }}</h2>
-                                <h2>{{ formatValue(getProductTotal(prod.price, prod)) }}</h2>
-                                <h2>
+                                <h2 data-testid="product-quantity">{{ prod.quantity }}</h2>
+                                <h2 data-testid="product-total">{{ formatValue(getProductTotal(prod.price, prod)) }}</h2>
+                                <h2 data-testid="product-option">
                                     <template v-if="prod.option">
                                         {{ prod.option }}
                                     </template>
@@ -53,7 +53,7 @@
                     </div>
                 </div>
 
-                <div class="sale-total">
+                <div class="sale-total" data-testid="sale-total">
                     <h2>Total: {{ formatValue(sale.total) }}</h2>
                 </div>
             </div>
@@ -202,6 +202,7 @@ export default {
                 padding: 10px;
 
                 h2 {
+                    text-align: center;
                     font-size: 18px;
                     font-weight: 500;
                 }

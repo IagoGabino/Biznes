@@ -19,7 +19,7 @@ describe('Vendor Registration', () => {
       cy.get('input[id="phone"]').type('1234567891');
 
       // random email to use in the email field (to avoid email already registered)
-      const randomEmail = `${Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)}@example.com`;
+      const randomEmail = `${Math.random().toString(36).substring(2, 15)}@example.com`;
       cy.get('input[id="email"]').type(randomEmail);
 
       cy.get('input[id="password"]').type('123456');
@@ -50,7 +50,7 @@ describe('Vendor Registration', () => {
       // intercept declaration
       cy.intercept('POST', 'http://localhost:3030/api/vendor').as('registerVendor');
   
-      const randomEmail = `${Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)}@example.com`;
+      const randomEmail = `${Math.random().toString(36).substring(2, 15) }@example.com`;
       cy.registerVendor(randomEmail);
       
       // visits register page
@@ -108,7 +108,7 @@ describe('Vendor Registration', () => {
       cy.get('input[id="phone"]').type('1234567891');
 
       // random email to use in the email field (to avoid email already registered)
-      const randomEmail = `${Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)}@example.com`;
+      const randomEmail = `${Math.random().toString(36).substring(2, 15) }@example.com`;
       cy.get('input[id="email"]').type(randomEmail);
 
       cy.get('input[id="password"]').type('123456');

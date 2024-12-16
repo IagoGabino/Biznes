@@ -8,6 +8,13 @@ module.exports = defineConfig({
     },
     viewportHeight: 1080,
     viewportWidth: 1920,
-    experimentalRunAllSpecs: true
+    experimentalRunAllSpecs: true,
+  },
+
+  component: {
+    devServer: {
+      framework: "vue-cli",
+      bundler: "webpack",
+    },
   },
 });
